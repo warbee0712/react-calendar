@@ -7,6 +7,14 @@
   text-transform: uppercase;
   font-size: 4rem;
   font-family: 'Roboto Condensed';
+  position: relative;
+}
+
+.month__next {
+  position: absolute;
+  right: 0;
+  transform: translateX(60%);
+  cursor: pointer;
 }
 
 .month__weekdays {

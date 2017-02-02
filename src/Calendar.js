@@ -25,10 +25,11 @@ class Month extends React.Component {
 
     const monthLabel = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     const weekdayLabel = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+    const nextMonth = (this.props.month + 1)%12
 
     return (
       <div className="month">
-        <h2 className="month__name">{monthLabel[this.props.month]}</h2>
+        <h2 className="month__name">{monthLabel[this.props.month]}<span className="month__next" onClick={() => this.props.nextMonth(nextMonth)}>{monthLabel[nextMonth]}</span></h2>
         <div className="month__weekdays">
           {weekdayLabel.map((weekday, index) => <div key={index} className="day"><span>{weekday}</span></div>)}
         </div>

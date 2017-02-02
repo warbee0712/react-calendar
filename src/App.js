@@ -16,6 +16,11 @@ class App extends Component {
       selectedDate: new Date(this.state.selectedDate.setDate(day))
     })
   }
+  nextMonth (month) {
+    this.setState({
+      selectedDate: new Date(this.state.selectedDate.setMonth(month))
+    })
+  }
   render() {
     return (
       <div className="App">
@@ -29,6 +34,7 @@ class App extends Component {
             {day: 30, body: 'Task 2'}
           ]}
           selectDay={this.selectDay.bind(this)}
+          nextMonth={this.nextMonth.bind(this)}
         />
       </div>
     )
