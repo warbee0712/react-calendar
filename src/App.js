@@ -11,30 +11,30 @@ class App extends Component {
       selectedDate: new Date()
     }
   }
-  selectDay (day) {
-    this.setState({
-      selectedDate: new Date(this.state.selectedDate.setDate(day))
-    })
-  }
-  nextMonth (month) {
-    this.setState({
-      selectedDate: new Date(this.state.selectedDate.setMonth(month))
-    })
+  selectDate (month, day) {
+    if (day !== undefined) {
+      this.setState({
+        selectedDate: new Date(this.state.selectedDate.setMonth(month, day))
+      })
+    } else {
+      this.setState({
+        selectedDate: new Date(this.state.selectedDate.setMonth(month))
+      })
+    }
   }
   render() {
     return (
       <div className="App">
-        <h1 className="App-title">Calendar</h1>
+        <h1 className="App-title">{this.state.selectedDate.getFullYear()} Calendar</h1>
         <Calendar
           year={this.state.selectedDate.getFullYear()}
           month={this.state.selectedDate.getMonth()}
           day={this.state.selectedDate.getDate()}
           tasks={[
-            {day: 25, body: 'Task 1'},
-            {day: 30, body: 'Task 2'}
+            {date: new Date(2017, 2, 25), body: 'Task 1'},
+            {date: new Date(2017, 2, 20), body: 'Task 2'}
           ]}
-          selectDay={this.selectDay.bind(this)}
-          nextMonth={this.nextMonth.bind(this)}
+          selectDate={this.selectDate.bind(this)}
         />
       </div>
     )

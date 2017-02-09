@@ -25,11 +25,16 @@ class Month extends React.Component {
 
     const monthLabel = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     const weekdayLabel = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
-    const nextMonth = (this.props.month + 1)%12
+    const previousMonth = this.props.month - 1
+    const nextMonth = this.props.month + 1
 
     return (
       <div className="month">
-        <h2 className="month__name">{monthLabel[this.props.month]}<span className="month__next" onClick={() => this.props.nextMonth(nextMonth)}>{monthLabel[nextMonth]}</span></h2>
+        <h2 className="month__name">
+          <span className="month__name-previous" onClick={() => this.props.selectDate(previousMonth)}>{monthLabel[previousMonth%12] || 'December'}</span>
+          <span className="month__name-current">{monthLabel[this.props.month]}</span>
+          <span className="month__name-next" onClick={() => this.props.selectDate(nextMonth)}>{monthLabel[nextMonth%12]}</span>
+        </h2>
         <div className="month__weekdays">
           {weekdayLabel.map((weekday, index) => <div key={index} className="day"><span>{weekday}</span></div>)}
         </div>
@@ -39,7 +44,7 @@ class Month extends React.Component {
             if (this.props.day === day) {
               return <div key={day} className="day selected"><span>{day}</span></div>
             } else {
-              return <div key={day} className="day"><span onClick={() => this.props.selectDay(day)}>{day}</span></div>
+              return <div key={day} className="day"><span onClick={() => this.props.selectDate(this.props.month, day)}>{day}</span></div>
             }
           })}
         </div>

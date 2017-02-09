@@ -8,12 +8,20 @@
   font-size: 4rem;
   font-family: 'Roboto Condensed';
   position: relative;
+  text-align: center;
 }
 
-.month__next {
+.month__name-next {
   position: absolute;
   right: 0;
   transform: translateX(60%);
+  cursor: pointer;
+}
+
+.month__name-previous {
+  position: absolute;
+  left: 0;
+  transform: translateX(-60%);
   cursor: pointer;
 }
 
